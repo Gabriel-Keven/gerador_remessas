@@ -1,0 +1,41 @@
+.menu{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+    width: 100%;
+    background-color: #28509b;
+    color: #fff;
+    text-align: center;
+}
+.menu h1{
+    text-align: left;
+    padding-left: 1.5em;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+.links_list li{
+    display: inline-block;
+    list-style: none;
+    margin-right: 1.5em;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.links_list li a {
+    padding: 0.4em 0.6em;
+}
+.active{
+    background-color: #fced03;
+    color: #28509b;
+}
+.links_list li a:hover {
+    border: 1px solid transparent;
+    padding: 0.4em 0.6em;
+    background-color: #fff;
+    color: #28509b;
+}

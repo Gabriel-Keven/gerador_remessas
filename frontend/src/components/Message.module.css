@@ -1,0 +1,21 @@
+.mensagem{
+  text-align: center;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+.error{
+  background-color: brown;
+  color: #fff;
+}
+.success{
+  background-color: rgb(44, 165, 42);
+  color: #fff;
+}
+.warning{
+  background-color: rgb(222, 134, 45);
+  color: #fff;
+}
