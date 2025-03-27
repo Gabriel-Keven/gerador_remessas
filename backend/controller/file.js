@@ -555,6 +555,7 @@ function formata_digito_agencia_ou_digito_conta(digito){
     if(digito=='x'){
         digito_formatado = digito.toUpperCase();
     }
+    console.log(digito);
    return digito_formatado;
 }
 function formata_conta(conta){

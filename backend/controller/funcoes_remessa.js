@@ -290,19 +290,19 @@ export function criar_dados_colaboradores_formatados (data_CSV) {
             digito_verificador_agencia_conta_formatado:' ',
         }    
          //Conta Corrente dos demais bancos exceto banco do brasil
-         if(linha[6]=='CC' && linha[3]!=='001'){
+         if(linha[6]==='CC' && formata_codigo_banco(linha[3])!=='001'){
             dados_CC.push(dados_CSV[index]); 
         }     
         //Conta Corrente do Banco do Brasil
-        if(linha[6]=='CC' && linha[3]=='001'){
+        if(linha[6]==='CC' && formata_codigo_banco(linha[3])==='001'){
             dados_CC_BB.push(dados_CSV[index]);
         }    
             //Conta poupança dos demais bancos exceto do banco do brasil
-        if(linha[6]==='CP' && linha[3]!=='001'){
+        if(linha[6]==='CP' && formata_codigo_banco(linha[3])!=='001'){
             dados_CP.push(dados_CSV[index]);
         }    
         //Conta Poupança do Banco do Brasil
-        if(linha[6]==='CP' && linha[3]==='001'){
+        if(linha[6]==='CP' && formata_codigo_banco(linha[3])=='001'){
             dados_CP_BB.push(dados_CSV[index]);
         }    
 
@@ -343,7 +343,7 @@ export function criar_remessa_CC(dados_CC,dados_CC_BB,camposFormulario,destino_T
         const [segmento_AB_formatado_CC,contador_registro_AB_CC,valores_registro_AB_CC] = criar_segmentos_AB(dados_CC,lote_servico_header_lote_AB_CC,camposFormulario);
         //TRAILER LOTE
         const [data_trailer_AB_CC,somatorio_dos_valores_AB_CC,quantiade_registros_AB_CC] = criar_trailer_lote_AB(lote_servico_header_lote_AB_CC,contador_registro_AB_CC,valores_registro_AB_CC);
-        //HEADER DO LOTE AB 2
+        //HEADER DO LOTE AB - 2(CONTA CORRENTE SOMENTE DO BANCO DO BRASIL)
         const [header_lote_AB_formatado_CC_BB,lote_servico_header_lote_AB_CC_BB] = criar_header_lote_AB(camposFormulario,incremento_lote_servico(lote_servico_header_lote_AB_CC),'01');
         // SEGMENTOS A E B CONTA CORRENTE SOMENTE BANCO DO BRASIL
         const [segmento_AB_formatado_CC_BB,contador_registro_AB_CC_BB,valores_registro_AB_CC_BB] = criar_segmentos_AB(dados_CC_BB,lote_servico_header_lote_AB_CC_BB,camposFormulario);
@@ -361,6 +361,7 @@ export function criar_remessa_CC(dados_CC,dados_CC_BB,camposFormulario,destino_T
         quantidade_registros_total = (quantiade_registros_AB_CC_BB + quantiade_registros_AB_CC)/2;
         
     }else if(dados_CC){
+        
         // HEADER DO ARQUIVO - CC SOMENTE OUTROS BANCOS
         const [header_arquivo_formatado_CC,lote_servico_header_arquivo_CC] = criar_header_arquivo(camposFormulario);
         // HEADER LOTE AB - 1 (CONTAS CORRENTES EXCETO BANCO DO BRASIL)
@@ -384,7 +385,7 @@ export function criar_remessa_CC(dados_CC,dados_CC_BB,camposFormulario,destino_T
         // HEADER LOTE AB - 1 (CONTAS CORRENTES EXCETO BANCO DO BRASIL)
         const [header_lote_AB_formatado_CC_BB,lote_servico_header_lote_AB_CC_BB] = criar_header_lote_AB(camposFormulario,incremento_lote_servico(lote_servico_header_arquivo_CC_BB),'01');
         //SEGMENTOS A E B CONTA CORRENTE EXCETO BANCO DO BRASIL
-        const [segmento_AB_formatado_CC_BB,contador_registro_AB_CC_BB,valores_registro_AB_CC_BB] = criar_segmentos_AB(dados_CC_BB,lote_servico_header_arquivo_CC_BB,camposFormulario);
+        const [segmento_AB_formatado_CC_BB,contador_registro_AB_CC_BB,valores_registro_AB_CC_BB] = criar_segmentos_AB(dados_CC_BB,lote_servico_header_lote_AB_CC_BB,camposFormulario);
         //TRAILER LOTE
         const [data_trailer_AB_CC_BB,somatorio_dos_valores_AB_CC_BB,quantiade_registros_AB_CC_BB] = criar_trailer_lote_AB(lote_servico_header_lote_AB_CC_BB,contador_registro_AB_CC_BB,valores_registro_AB_CC_BB);
         //HEADER DO LOTE AB 2

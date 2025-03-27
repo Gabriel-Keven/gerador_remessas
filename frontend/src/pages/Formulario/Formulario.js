@@ -1,9 +1,9 @@
-import React,{ useState } from 'react'
+import { useState } from 'react'
 
 //CSS
-import Styles from './Formulario.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Styles from './Formulario.module.css'
 
 //Components
 import axios from 'axios'
@@ -121,10 +121,10 @@ const Formulario = () => {
   };
   return (
     <div>
-       <ToastContainer />
       <div className={Styles.main}>
+           <ToastContainer />
         <h2>Siga as orientações abaixo para geração do(s) arquivo(s) CNAB 240.</h2>
-        <p>
+        <div>
           <ol>
             <li>Faça somente upload de arquivos .CSV. Em que os dados são separado por vírgulas.</li>
             <li>O arquivo CSV deve ser formato na seguinte ordem de colunas:
@@ -153,9 +153,9 @@ const Formulario = () => {
             </li>
             <li>Após as configurações acima, selecionar e revisar os campos do formulário salve o arquivo e faça o upload.</li>
           </ol>
-        </p>
+        </div>
       {/* Formulário para preenchimento */}
-      <form onSubmit={handleSubmit} method='post' enctype="multipart/form-data" action='/'>     
+      <form onSubmit={handleSubmit} method='post' encType="multipart/form-data" action='/'>     
         <label>
           <span>CNPJ da empresa de origem</span> 
           <select name="cnpj" 

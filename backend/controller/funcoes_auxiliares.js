@@ -50,6 +50,8 @@ export function formata_digito_agencia_ou_digito_conta(digito){
     if(digito=='x'){
         digito_formatado = digito.toUpperCase();
     }
+    //Remover quebra linha do dígito da conta
+    digito_formatado = digito_formatado.replace(/(\r\n|\n|\r)/gm,"");
    return digito_formatado;
 }
 export function formata_conta(conta){
