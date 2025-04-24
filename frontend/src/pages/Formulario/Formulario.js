@@ -211,6 +211,7 @@ const Formulario = () => {
             value={conta}
           >
               <option value="">Selecione o número da conta corrente</option>
+              <option value="000000092858">FUNEC - 92858</option>
               <option value="000000071510">FUNEC - 71510</option>
               <option value="000000065615">PMC - 65615</option>
           </select>
@@ -223,6 +224,7 @@ const Formulario = () => {
             value={digitoConta}
           >
               <option value="">Selecione o dígito da conta</option>
+              <option value="5">FUNEC - 5</option>
               <option value="7">FUNEC - 7</option>
               <option value="1">PMC - 1</option>
           </select>

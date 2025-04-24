@@ -13,7 +13,7 @@ export function remove_ponto_e_traco(dado){
     return dado_2;
 }
 export function formata_nome(nome){
-    let nome_formatado = nome.normalize('NFD').replace(/[\u0300-\u036f]/g,"").toUpperCase();
+    let nome_formatado = nome.normalize('NFD').replace(/[\u0300-\u036f]/g,"").replace('Ç','C').toUpperCase();
     if(nome.length>=30){
         nome_formatado = nome_formatado.substring(0,30);
     }else{
@@ -59,7 +59,7 @@ export function formata_conta(conta){
     return conta_formatada;
 }
 export function formata_valor_pago(valor_pago){
-    let valor = Number.parseFloat(valor_pago);
+    let valor = Number.parseFloat(valor_pago).toFixed(2);
     let valor_pago_formatado;
     let novo_valor_pago;
     if(Number.isInteger(valor)){
@@ -105,3 +105,7 @@ export function gera_data_atual(formato){
     const data_atual =  `${dia}${formato}${mes}${formato}${ano}`;
     return data_atual;
 }    
+export function arredondar(valor, casas = 2) {
+    const fator = Math.pow(10, casas);
+    return Math.round(valor * fator) / fator;
+  }

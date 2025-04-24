@@ -6,7 +6,7 @@
 import {incremento_lote_servico,remove_ponto_e_traco,formata_nome,formata_numero_sequencial_lote,
     formata_numero_convernio,formata_cnpj,formata_cpf,formata_codigo_banco,formata_agencia,
     formata_digito_agencia_ou_digito_conta,formata_conta,formata_valor_pago,formata_valor_pago_trailer_lote,
-    formata_data_pagamento,formata_quantidade_registros,formata_quantidade_lotes_trailer_arquivo,gera_data_atual
+    formata_data_pagamento,formata_quantidade_registros,formata_quantidade_lotes_trailer_arquivo,gera_data_atual,arredondar
 } from './funcoes_auxiliares.js'
 
 import fs from 'fs';
@@ -183,7 +183,7 @@ export function criar_segmentos_AB(dados_colaborades,lote_servico_atual,campos_f
                 uso_exclusivo_SIAPE:'      ',
                 codigo_ISPB:'00000000'
             };    
-            valores_registro_AB = valores_registro_AB+dados_colaborades[key].valor_pago;
+            valores_registro_AB = arredondar(valores_registro_AB+dados_colaborades[key].valor_pago);
         }    
         index++;
     }    
