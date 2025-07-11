@@ -13,7 +13,12 @@ export function remove_ponto_e_traco(dado){
     return dado_2;
 }
 export function formata_nome(nome){
-    let nome_formatado = nome.normalize('NFD').replace(/[\u0300-\u036f]/g,"").replace('Ç','C').toUpperCase();
+    let nome_formatado = nome.trimEnd().normalize('NFD').replace(/[\u0300-\u036f]/g,"")
+        .replace('Ç','C')
+        .replace('ç','c')
+        .replace('ñ','n')
+        .replace('Ñ','N')
+        .toUpperCase();
     if(nome.length>=30){
         nome_formatado = nome_formatado.substring(0,30);
     }else{
@@ -30,23 +35,23 @@ export function formata_numero_convernio(formata_numero_convenio){
    return numero_convenio_formatado;
 }
 export function formata_cnpj(cnpj){
-    let cnpj_formatado = remove_ponto_e_traco(cnpj).padStart(14,'0');
+    let cnpj_formatado = remove_ponto_e_traco(cnpj).trimEnd().padStart(14,'0');
    return cnpj_formatado;
 }
 export function formata_cpf(cpf){
-   let cpf_formatado = remove_ponto_e_traco(cpf).padStart(11,'0');
+   let cpf_formatado = remove_ponto_e_traco(cpf).trimEnd().padStart(11,'0');
    return cpf_formatado;
 }
 export function formata_codigo_banco(codigo_banco){
-   let codigo_banco_formatado = remove_ponto_e_traco(codigo_banco).padStart(3,'0');
+   let codigo_banco_formatado = remove_ponto_e_traco(codigo_banco).trimEnd().padStart(3,'0');
    return codigo_banco_formatado;
 }
 export function formata_agencia(agencia){
-   let agencia_formatada = remove_ponto_e_traco(agencia).padStart(5,'0');
+   let agencia_formatada = remove_ponto_e_traco(agencia).trimEnd().padStart(5,'0');
    return agencia_formatada;
 }
 export function formata_digito_agencia_ou_digito_conta(digito){
-    let digito_formatado = digito;
+    let digito_formatado = digito.trimEnd();
     if(digito=='x'){
         digito_formatado = digito.toUpperCase();
     }
@@ -55,11 +60,11 @@ export function formata_digito_agencia_ou_digito_conta(digito){
    return digito_formatado;
 }
 export function formata_conta(conta){
-    let conta_formatada = remove_ponto_e_traco(conta).padStart(12,'0');
+    let conta_formatada = remove_ponto_e_traco(conta).trimEnd().padStart(12,'0');
     return conta_formatada;
 }
 export function formata_valor_pago(valor_pago){
-    let valor = Number.parseFloat(valor_pago).toFixed(2);
+    let valor = Number.parseFloat(valor_pago).toFixed(2).trimEnd();
     let valor_pago_formatado;
     let novo_valor_pago;
     if(Number.isInteger(valor)){

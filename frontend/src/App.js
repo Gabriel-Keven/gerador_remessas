@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 import Formulario from './pages/Formulario/Formulario.js';
 
 function App() {
+  const a = process.env.REACT_APP_FUNEC_CONTA;
+  console.log(a);
   return (
     <div>
       <BrowserRouter>

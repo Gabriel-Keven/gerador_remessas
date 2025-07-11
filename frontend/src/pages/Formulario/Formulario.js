@@ -31,8 +31,11 @@ function verifica_data_pagamento(data_pagamento){
 }
 
 const Formulario = () => {
-
   //Variáveis
+
+
+  // console.log(process.env.REACT_APP_API_URL);
+
   const [cnpj,setCNPJ] = useState('');
   const [numeroConvenio,setNumeroConvenio] = useState('');
   const [agencia,setAgencia] = useState('');
@@ -123,6 +126,7 @@ const Formulario = () => {
     <div>
       <div className={Styles.main}>
            <ToastContainer />
+            <h1>URL da API: {process.env.REACT_APP_API_URL}</h1>
         <h2>Siga as orientações abaixo para geração do(s) arquivo(s) CNAB 240.</h2>
         <div>
           <ol>
@@ -165,6 +169,7 @@ const Formulario = () => {
               <option value="">Selecione o CNPJ</option>
               <option value="16694465000120">FUNEC - 16694465000120</option>
               <option value="18715508000131">PMC - 18715508000131</option>
+
           </select>
         </label>                     
         
@@ -211,6 +216,7 @@ const Formulario = () => {
             value={conta}
           >
               <option value="">Selecione o número da conta corrente</option>
+              <option value="000000090726">FUNEC - 90726</option>
               <option value="000000092858">FUNEC - 92858</option>
               <option value="000000071510">FUNEC - 71510</option>
               <option value="000000065615">PMC - 65615</option>
@@ -224,6 +230,7 @@ const Formulario = () => {
             value={digitoConta}
           >
               <option value="">Selecione o dígito da conta</option>
+              <option value="X">FUNEC - X</option>
               <option value="5">FUNEC - 5</option>
               <option value="7">FUNEC - 7</option>
               <option value="1">PMC - 1</option>
